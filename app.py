@@ -6,7 +6,7 @@ import face_recognition
 import cv2
 import numpy as np
 
-UPLOAD_FOLDER = '/home/student/personalProject/static/known_people'
+UPLOAD_FOLDER = '/home/student/Personal-Project/static/known_people'
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
 
 app = Flask(__name__)
