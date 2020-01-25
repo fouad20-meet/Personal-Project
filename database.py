@@ -17,18 +17,26 @@ def add_person(name,email,phone,picture):
 	session.commit()
 
 def query_by_id(person_id):
-    person = session.query(Person).filter_by(id=person_id).first()
-    return person_id
+    person = session.query(Person).filter_by(person_id=person_id).first()
+    return person
 
 def delete_by_id(person_id):
-	session.query(Person).filter_by(id=person_id).delete()
+	session.query(Person).filter_by(person_id=person_id).delete()
 	session.commit()
 
 def query_all():
 	people = session.query(Person).all()
 	return people
 
-def delete_by_id(person_id):
-	session.query(Person).filter_by(person_id=person_id).delete()
+def update_person(person_id,name,email,phone,picture):
+	person = query_by_id(person_id)
+	if name != "":
+		person.name=name
+	if email != "":
+		person.email=email
+	if phone != "":
+		person.phone = phone
+	if picture != None:
+		person.picture = picture
 	session.commit()
 

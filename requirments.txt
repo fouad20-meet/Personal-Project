@@ -26,7 +26,7 @@ WTForms==2.1
 pyperclip==1.6.2
 datetime==4.2
 setuptools==20.7.0
-Click==6.0
-face-recognition-models==0.3.0
-dlib==19.7
+click==7.0
+face-recognition-models==1.2.3
+dlib==19.19.0
 cv2==3.2.0

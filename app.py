@@ -154,12 +154,40 @@ def edit():
 	if session['admin']:
 		return render_template('edit.html', people = query_all())
 
+@app.route('/edit_person/<int:person_id>', methods=['GET','POST'])
+def display_person_edit(person_id):
+	if session['admin']:
+		person = query_by_id(person_id)
+		if request.method == 'POST':
+			name = request.form['name']
+			email = request.form['email']
+			phone = request.form['phone']
+			picture = request.files['picture']
+			upload_file(picture)
+			if name == "":
+				name=person.name
+			if email == "":
+				email=person.email
+			if phone == "":
+				phone = person.phone
+			if picture == None:
+				picture = person.picture
+			update_person(person_id,name,email,phone,picture)
+			return redirect(url_for('edit'))
+		return render_template("edit_project.html", person = person)
+	return redirect(url_for('admin'))
+
 @app.route('/delete/<int:person_id>')
 def delete_person(person_id):
 	if session['admin']:
 		delete_by_id(person_id)
 		return redirect(url_for('edit'))
 	return redirect(url_for('admin'))
+
+@app.route('/logout')
+def logout():
+	session['admin']=False
+	return redirect(url_for('home'))
 
 if __name__ == '__main__':
     app.run(debug=True)
