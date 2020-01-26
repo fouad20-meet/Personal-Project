@@ -2,9 +2,9 @@ from database import *
 from flask import *
 import os
 from werkzeug import secure_filename
-import face_recognition
-import cv2
-import numpy as np
+#import face_recognition
+#import cv2
+#import numpy as np
 
 UPLOAD_FOLDER = '/home/student/Personal-Project/static/known_people'
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
@@ -170,9 +170,9 @@ def display_person_edit(person_id):
 				email=person.email
 			if phone == "":
 				phone = person.phone
-			if picture == None:
-				picture = person.picture
-			update_person(person_id,name,email,phone,picture)
+			if picture != None:
+				picture1 = picture.filename
+			update_person(person_id,name,email,phone,picture1)
 			return redirect(url_for('edit'))
 		return render_template("edit_project.html", person = person)
 	return redirect(url_for('admin'))

@@ -36,14 +36,28 @@
         <div class="divider-custom-line"></div>
       </div>
           <h1>People</h1>
-       <ol>
-           {%for person in people%}
-          <li style="font-size: 20px;">Name: {{person.name}}. Email: {{person.email}}. Phone: {{person.phone}}. Picture: {{person.picture}} 
-           <a href="{{ url_for('display_person_edit',person_id= person.person_id) }}">edit</a>
-           <a href="{{ url_for('delete_person',person_id= person.person_id) }}">delete</a></li>
-           </li>
-           {%endfor%}
-      </ol>
+       <table style="width:100%">
+        <tr>
+          <th>Name</th>
+          <th>Email</th> 
+          <th>Phone</th>
+          <th>Picture</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+        {%for person in people%}
+        <tr>
+          <td>{{person.name}}</td>
+          <td>{{person.email}}</td>
+          <td>{{person.phone}}</td>
+          <td><img src="static/known_people/{{person.picture}}" width="50"></td>
+          <td><a href="{{ url_for('display_person_edit',person_id= person.person_id) }}">Edit</a></td>
+          <td><a href="{{ url_for('delete_person',person_id= person.person_id) }}">Delete</a></li></td>
+        </tr>
+        {%endfor%}
+      </table>
+           
+           
 
   <!-- Navigation -->
         <div class="row">
