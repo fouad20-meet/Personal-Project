@@ -2,9 +2,9 @@ from database import *
 from flask import *
 import os
 from werkzeug import secure_filename
-#import face_recognition
-#import cv2
-#import numpy as np
+import face_recognition
+import cv2
+import numpy as np
 
 UPLOAD_FOLDER = '/home/student/Personal-Project/static/known_people'
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
